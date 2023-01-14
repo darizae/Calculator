@@ -27,9 +27,29 @@ body {
 
   #display {
     flex: 1;
-    background-color: whitesmoke;
+    background-color: hsl(157, 8%, 25%);
     flex-direction: column;
     border: solid;
+  }
+
+  .display-subsection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border: 1px solid #d9d9d9;
+    color: #fff;
+  }  
+
+  p {
+    margin-right: 10px;
+  }
+
+  #results-display {
+    flex: 1;
+  }
+
+  #current-display {
+    flex: 2;
   }
 
   #buttons {
@@ -38,25 +58,13 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 8px;
-    padding: 4%;
-    color: white;
+    padding: 2%;
     background-color: black;
   }
 
   #double-span {
     grid-row: 5 / 6;
     grid-column: 1 / 3;
-  }
-  
-
-  #results-display {
-    flex: 1;
-    background-color: azure;
-  }
-
-  #current-display {
-    flex: 2;
-    background-color: antiquewhite;
   }
 
   button {
