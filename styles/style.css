@@ -1,0 +1,35 @@
+body {
+    background-image: url("../img/background.jpg"); 
+    /*Photo by Pixabay: https://www.pexels.com/photo/black-metal-tools-hanged-on-a-rack-near-table-162631/*/
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    padding: 1.5%;
+    background-color: silver;
+    box-shadow: 2px 2px 5px black;
+    gap: 10px;
+  }
+
+  #display,
+  #buttons {
+    border-radius: 5px;
+  }
+
+  #display {
+    flex: 1;
+    background-color: whitesmoke;
+  }
+
+  #buttons {
+    flex: 2;
+    color: white;
+    background-color: black;
+  }
