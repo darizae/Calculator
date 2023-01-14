@@ -4,12 +4,19 @@ const currLabel = document.querySelector("#curr");
 const DEFAULT_VALUE = currLabel.innerHTML;
 let currValue = currLabel.innerHTML;
 
-let nextValue = "";
-const DEFAULT_NEXT = "";
+const EMPTY = "";
+let nextValue = EMPTY;
+
 
 //Operator tracking
-let currOper = "";
-const DEFAULT_OPER = "";
+let currOper = EMPTY;
+
+//Upper result tracking
+const ongoingResult = document.querySelector("#result");
+
+const updateResultsDisplay = (content) => {
+    ongoingResult.innerHTML = content;
+}
 
 const getCurrValue = () => {
     return currLabel.innerHTML;
@@ -31,7 +38,7 @@ const numButtons = document.querySelectorAll(".number");
 //Upon clicking, their inner HTML value is stored in the currValue variable
 numButtons.forEach(button => {
     button.addEventListener("click", () => {
-        if (currOper !== "") {
+        if (currOper !== EMPTY) {
             nextValue = button.innerHTML;
             currLabel.innerHTML = nextValue;
             return;
@@ -60,6 +67,7 @@ operButtons.forEach(button => {
         }
 
         updateCurrOperator(button.innerHTML);
+        updateResultsDisplay(`${currValue} ${currOper}`);
     })
 });
 
@@ -70,10 +78,14 @@ const updateCurrOperator = (pressedOper) => {
 
 //Calculation
 const calculate = () => {
+    if (currOper === EMPTY) return;
+
     let num1 = Number(currValue);
     let num2 = Number(nextValue);
 
     let result = defineOperation()(num1, num2);
+
+    updateResultsDisplay(`${currValue} + ${nextValue} =`);
     changeCurrValue(result);
     setNextOper();
 }
@@ -103,10 +115,12 @@ clearButton.addEventListener("click", () => clearAll());
 
 const clearAll = () => {
     changeCurrValue(DEFAULT_VALUE);
+    updateResultsDisplay(EMPTY);
     setNextOper();
 }
 
 const setNextOper = () => {
-    currOper = DEFAULT_OPER;
-    nextValue = DEFAULT_NEXT
+    currOper = EMPTY;
+    nextValue = EMPTY;
 }
+
