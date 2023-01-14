@@ -83,7 +83,7 @@ const calculate = () => {
     let num1 = Number(currValue);
     let num2 = Number(nextValue);
 
-    let result = defineOperation()(num1, num2);
+    let result = round(defineOperation()(num1, num2));
 
     updateResultsDisplay(`${currValue} + ${nextValue} =`);
     changeCurrValue(result);
@@ -123,4 +123,9 @@ const setNextOper = () => {
     currOper = EMPTY;
     nextValue = EMPTY;
 }
+
+const round = (num) => {
+    return Math.ceil(num * 10000) / 10000;
+}
+  
 
