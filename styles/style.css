@@ -42,6 +42,11 @@ body {
 
   p {
     margin-right: 10px;
+    font-family: 'Digital-7', monospace;
+  }
+
+  #curr {
+    font-size: 25px;
   }
 
   #results-display {
