@@ -33,7 +33,10 @@ const numButtons = document.querySelectorAll(".number");
 numButtons.forEach(button => {
     button.addEventListener("click", () => {
         if (currOper !== EMPTY) {
-            nextValue = button.innerHTML;
+            if (button.innerHTML == DECIMAL_DOT) {
+
+            }
+            nextValue = (nextValue === EMPTY) ? button.innerHTML : nextValue += button.innerHTML;
             currLabel.innerHTML = nextValue;
             return;
         }
@@ -80,7 +83,7 @@ const calculate = () => {
 
     let result = round(defineOperation()(num1, num2));
 
-    updateResultsDisplay(`${currValue} + ${nextValue} =`);
+    updateResultsDisplay(`${currValue} ${currOper} ${nextValue} =`);
     changeCurrValue(result);
     setNextOper();
 }
