@@ -7,6 +7,7 @@ let currValue = currLabel.innerHTML;
 const EMPTY = "";
 let nextValue = EMPTY;
 
+const DECIMAL_DOT = ".";
 
 //Operator tracking
 let currOper = EMPTY;
@@ -18,17 +19,10 @@ const updateResultsDisplay = (content) => {
     ongoingResult.innerHTML = content;
 }
 
-const getCurrValue = () => {
-    return currLabel.innerHTML;
-}
-
 const changeCurrValue = (newVal) => {
+    if (dotOverflow(newVal)) return;
     currValue = newVal;
     currLabel.innerHTML = newVal;
-}
-
-const appendToCurrValue = (newVal) => {
-    currValue += newVal;
 }
 
 //Select all the num buttons
@@ -48,8 +42,10 @@ numButtons.forEach(button => {
 });
 
 const updateCurrValue = (pressedVal) => {
+    debugger;
+    if (dotOverflow(pressedVal)) return;
     if (currValue === DEFAULT_VALUE && pressedVal === DEFAULT_VALUE) return;
-    currValue = (currValue === DEFAULT_VALUE) ? pressedVal : currValue+= pressedVal;
+    currValue = (currValue === DEFAULT_VALUE) ? pressedVal : currValue += pressedVal;
     currLabel.innerHTML = currValue;
 }
 
@@ -122,6 +118,14 @@ const clearAll = () => {
 const setNextOper = () => {
     currOper = EMPTY;
     nextValue = EMPTY;
+}
+
+const hasDot = (str) => {
+    return str.indexOf(DECIMAL_DOT) !== -1;
+}
+
+const dotOverflow = (newVal) => {
+    return newVal === DECIMAL_DOT && hasDot(currValue);
 }
 
 const round = (num) => {
