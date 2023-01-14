@@ -1,3 +1,0 @@
-- Set logic %
-
-- Add calc icon to webpage
