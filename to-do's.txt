@@ -1,11 +1,3 @@
-- If a calc operator is pressed and the nextValue is empty, calculate() is executed
-
-- Figure out what and when to update at Results Display
-
-- Set behavior with float numbers
-
-- Set logic +/-
-
 - Set logic %
 
 - Add calc icon to webpage

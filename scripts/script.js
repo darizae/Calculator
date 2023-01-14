@@ -142,5 +142,15 @@ flipButton.addEventListener("click", () => {
 const flipSymbol = (num) => {
     return num * -1;
 }
-  
 
+
+const percButton = document.querySelector("#perc-button");
+percButton.addEventListener("click", () => {
+    if (currValue === DEFAULT_VALUE) return;
+    changeCurrValue(round(calcPercentage(currValue)));
+    updateResultsDisplay(currValue);
+});
+
+const calcPercentage = (num) => {
+    return num / 100;
+}
