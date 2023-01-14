@@ -17,6 +17,7 @@ const getCurrValue = () => {
 
 const changeCurrValue = (newVal) => {
     currValue = newVal;
+    currLabel.innerHTML = newVal;
 }
 
 const appendToCurrValue = (newVal) => {
@@ -32,6 +33,7 @@ numButtons.forEach(button => {
     button.addEventListener("click", () => {
         if (currOper !== "") {
             nextValue = button.innerHTML;
+            currLabel.innerHTML = nextValue;
             return;
         }
         updateCurrValue(button.innerHTML);
@@ -51,6 +53,12 @@ const operButtons = document.querySelectorAll(".calcOperator");
 //Upon clicking, their inner HTML is stored in the currOperator variable
 operButtons.forEach(button => {
     button.addEventListener("click", () => {
+
+        if (button.innerHTML === currOper) {
+            nextValue = currValue;
+            calculate();
+        }
+
         updateCurrOperator(button.innerHTML);
     })
 });
@@ -66,7 +74,8 @@ const calculate = () => {
     let num2 = Number(nextValue);
 
     let result = defineOperation()(num1, num2);
-    console.log(result);
+    changeCurrValue(result);
+    setNextOper();
 }
 
 const defineOperation = () => {
@@ -75,7 +84,7 @@ const defineOperation = () => {
         case "-": return subtract;
         case "*": return multiply;
         case "/": return divide;
-        default: alert("Error in defining calc operation");
+        default: return 404;
     }
 }
 
@@ -93,9 +102,11 @@ const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", () => clearAll());
 
 const clearAll = () => {
-    debugger;
-    currValue = DEFAULT_VALUE;
-    currLabel.innerHTML = currValue;
+    changeCurrValue(DEFAULT_VALUE);
+    setNextOper();
+}
+
+const setNextOper = () => {
     currOper = DEFAULT_OPER;
     nextValue = DEFAULT_NEXT
 }
