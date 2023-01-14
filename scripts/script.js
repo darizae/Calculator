@@ -42,7 +42,6 @@ numButtons.forEach(button => {
 });
 
 const updateCurrValue = (pressedVal) => {
-    debugger;
     if (dotOverflow(pressedVal)) return;
     if (currValue === DEFAULT_VALUE && pressedVal === DEFAULT_VALUE) return;
     currValue = (currValue === DEFAULT_VALUE) ? pressedVal : currValue += pressedVal;
@@ -130,6 +129,18 @@ const dotOverflow = (newVal) => {
 
 const round = (num) => {
     return Math.ceil(num * 10000) / 10000;
+}
+
+
+const flipButton = document.querySelector("#symbol-button");
+flipButton.addEventListener("click", () => {
+    if (currValue === DEFAULT_VALUE) return;
+    changeCurrValue(flipSymbol(currValue));
+    updateResultsDisplay(currValue);
+});
+
+const flipSymbol = (num) => {
+    return num * -1;
 }
   
 
