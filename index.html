@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/script.js" defer></script> 
     <title>Calculator</title>
 </head>
 <body>
     <div id="calculator">
         <div id="display" class="main-section">
             <div id="results-display" class="display-subsection">
-                <p>Results Display</p>
+                <p id="result">Results Display</p>
             </div>
             <div id="current-display" class="display-subsection">
-                <p>Current Display</p>
+                <p id="curr">0</p>
             </div>
         </div>
         <div id="buttons" class="main-section">
@@ -33,7 +34,7 @@
             <button class="number">1</button>
             <button class="number">2</button>
             <button class="number">3</button>
-            <button id="sum-button" class="operator">+</button>
+            <button id="sum-button" class="operator calcOperator">+</button>
             <button id="double-span" class="number">0</button>
             <button class="number">.</button>
             <button id="equals-button" class="operator">=</button>
